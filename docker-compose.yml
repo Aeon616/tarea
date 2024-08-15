@@ -1,0 +1,26 @@
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.18.0-alpine
+    volumes:
+      - "C:/Users/Aeona/Pc2/nginx/index.html:/usr/share/nginx/html/index.html"
+      - "C:/Users/Aeona/Pc2/nginx/default.conf.template:/etc/nginx/template/default.conf.template"
+
+    ports:
+      - 80:80
+
+  mips:
+    build:
+      context: "C:/Users/Aeona/Pc2/MIPSTranslator"
+      dockerfile: Dockerfile
+    container_name: mips
+    ports:
+      - 8000:80
+
+  silvy:
+    build:
+      context: "C:/Users/Aeona/Pc2/Silvy"
+      dockerfile: Dockerfile
+    container_name: silvy
+    ports:
+      - 8001:80
